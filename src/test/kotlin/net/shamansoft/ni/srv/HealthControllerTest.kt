@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 import javax.inject.Inject
 
 @MicronautTest
-class HelloControllerTest {
+class HealthControllerTest {
     @Inject
     @field:Client("/")
     lateinit var client : RxHttpClient
@@ -20,14 +20,14 @@ class HelloControllerTest {
         val request: HttpRequest<Any> = HttpRequest.GET("/hello") // <3>
         val body = client.toBlocking().retrieve(request)
         assertNotNull(body)
-        assertEquals("Hello World from net.shamansoft.ni.srv.HelloController", body)
+        assertEquals("Hello World from net.shamansoft.ni.srv.HealthController", body)
     }
 
-//    @Test
-//    fun testHealth() {
-//        val request: HttpRequest<Any> = HttpRequest.GET("/health")
-//        val actual = client.toBlocking().retrieve(request)
-//        assertNotNull(actual)
-//        assertEquals("OK", actual)
-//    }
+    @Test
+    fun testHealth() {
+        val request: HttpRequest<Any> = HttpRequest.GET("/health")
+        val actual = client.toBlocking().retrieve(request)
+        assertNotNull(actual)
+        assertEquals("OK", actual)
+    }
 }

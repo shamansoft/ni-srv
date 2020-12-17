@@ -23,3 +23,4 @@ Healthcheck
 ```
 http://localhost:8082/health
 ```
+should return `OK`
