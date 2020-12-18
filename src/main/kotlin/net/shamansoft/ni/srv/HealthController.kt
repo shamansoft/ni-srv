@@ -6,7 +6,7 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Produces
 
 @Controller("/")
-class HealthController {
+class HealthController(private val healthService: HealthService) {
 
     @Get("hello/")
     @Produces(MediaType.TEXT_PLAIN)
@@ -17,6 +17,6 @@ class HealthController {
     @Get("health/")
     @Produces(MediaType.APPLICATION_JSON)
     fun health(): String {
-        return "OK"
+        return healthService.getStatus()
     }
 }

@@ -29,6 +29,6 @@ class HealthControllerTest {
         val request: HttpRequest<Any> = HttpRequest.GET("/health")
         assertThat(client.toBlocking().retrieve(request))
                 .isNotNull()
-                .isEqualTo("OK")
+                .isEqualTo("Cucumber")
     }
 }
